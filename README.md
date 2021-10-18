@@ -1,57 +1,17 @@
-# Project Name
+# Azure Cosmos DB API For MongoDB Python Quick Start
 
-(short, 1-3 sentenced, description of the project)
-
-## Features
-
-This project framework provides the following features:
-
-* Feature 1
-* Feature 2
-* ...
+This sample shows how to get started with the Azure Cosmos DB API for MongoDB API from a Python application
 
 ## Getting Started
 
+python run.py
+
 ### Prerequisites
 
-(ideally very short, if any)
-
-- OS
-- Library version
-- ...
-
-### Installation
-
-(ideally very short)
-
-- npm install [package name]
-- mvn install
-- ...
+- An Azure Cosmos DB API for MongoDB Account
+- Python 3.8+ installed
+- PyMongo installed
 
 ### Quickstart
-(Add steps to get up and running quickly)
 
-1. git clone [repository clone url]
-2. cd [respository name]
-3. ...
-
-
-## Demo
-
-A demo app is included to show how to use the project.
-
-To run the demo, follow these steps:
-
-(Add steps to start up the demo)
-
-1.
-2.
-3.
-
-## Resources
-
-(Any additional resources or related projects)
-
-- Link to supporting information
-- Link to similar sample
-- ...
+Check out the documentation for instructions:
