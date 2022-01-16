@@ -53,7 +53,7 @@ def create_database_unsharded_collection(client):
         db.command({'customAction': "CreateCollection", 'collection': UNSHARDED_COLLECTION_NAME})
         print("Created collection {}". format(UNSHARDED_COLLECTION_NAME))
     
-    return db.COLLECTION_NAME
+    return db[UNSHARDED_COLLECTION_NAME]
 
 def main():
     """Connect to the API for MongoDB, create DB and collection, perform CRUD operations"""
