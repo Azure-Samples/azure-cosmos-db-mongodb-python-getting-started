@@ -1,17 +1,28 @@
 # Azure Cosmos DB API For MongoDB Python Quick Start
 
-This sample shows how to get started with the Azure Cosmos DB API for MongoDB API from a Python application
+These samples shows how to get started with the Azure Cosmos DB API for MongoDB API from a Python application
 
-## Getting Started
+## Try it now
 
-python run.py
-
-### Prerequisites
+Prerequisites:
 
 - An Azure Cosmos DB API for MongoDB Account
 - Python 3.8+ installed
-- PyMongo installed
+- [PyMongo](https://www.mongodb.com/docs/drivers/pymongo/) installed
 
-### Quickstart
+Run the following command, which will prompt you for a connection string::
 
-Check out the documentation for instructions:
+```python
+python run.py
+```
+
+### Quickstart documentation
+
+Check out the documentation for instructions: https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/quickstart-python.
+
+Prerequisites:
+
+- An Azure Cosmos DB API for MongoDB Account
+- Python 3.8+ installed
+- [PyMongo](https://www.mongodb.com/docs/drivers/pymongo/) installed
+- [python-dotenv](https://pypi.org/project/python-dotenv/) installed
