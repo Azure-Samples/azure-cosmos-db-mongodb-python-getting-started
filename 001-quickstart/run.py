@@ -67,7 +67,8 @@ def main():
     # </create_collection>
 
     # <create_index>
-    result = collection.create_index([('name', pymongo.ASCENDING)], unique=True)
+    indexes = [{'key': {'_id': 1}, 'name': "_id_1"},{'key': {'name': 2}, 'name': "_id_2"}]
+    db.command({'customAction': "UpdateCollection", 'collection': COLLECTION_NAME, 'indexes': indexes})
     print("Indexes are: {}\n".format(sorted(collection.index_information())))
     # </create_index>
 
