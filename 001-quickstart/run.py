@@ -60,7 +60,7 @@ def main():
 
     # <create_index>
     result = collection.create_index([('name', pymongo.ASCENDING)], unique=True)
-    print("Indexes are: {}".format(sorted(collection.index_information())))
+    print("Indexes are: {}\n".format(sorted(collection.index_information())))
     # </create_index>
 
     # <new_doc>
@@ -101,6 +101,8 @@ if __name__ == '__main__':
 Using database: adventureworks
 
 Using collection: products
+
+Indexes are: ['_id_', 'name_1']
 
 Upserted document with _id <ID>
 
