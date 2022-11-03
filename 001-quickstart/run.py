@@ -26,7 +26,6 @@ CONNECTION_STRING = os.environ.get('COSMOS_CONNECTION_STRING')
 # <constant_values>
 DB_NAME = "adventureworks"
 COLLECTION_NAME = "products"
-SAMPLE_FIELD_NAME = "name"
 # </constant_values>
 
 def main():
@@ -38,7 +37,6 @@ def main():
         # </connect_client>
         try:
             client.server_info() # validate connection string
-            print ("Connected to MongoDB successfully!\n")
         except (pymongo.errors.OperationFailure,
                 pymongo.errors.ConnectionFailure,
                 pymongo.errors.ExecutionTimeout) as err:
@@ -47,15 +45,25 @@ def main():
         sys.exit("Error:" + str(err))
 
     # <new_database>
-    # Database reference with creation on first write if it doesn't already exist
+    # Create database if it doesn't exist
     db = client[DB_NAME]
-    print("Using database: {}\n".format(DB_NAME))
+    if DB_NAME not in client.list_database_names():
+        # Database with 400 RU throughput that can be shared across the DB's collections
+        db.command({'customAction': "CreateDatabase", 'offerThroughput': 400})
+        print("Created db '{}' with shared throughput.\n". format(DB_NAME))
+    else:
+        print("Using database: '{}'.\n".format(DB_NAME))
     # </new_database>
 
     # <create_collection>
-    # Collection reference with creation on first write if it doesn't already exist
+    # Create collection if it doesn't exist
     collection = db[COLLECTION_NAME]
-    print("Using collection: {}\n".format(COLLECTION_NAME))
+    if COLLECTION_NAME not in db.list_collection_names():
+        # Creates a unsharded collection that uses the DBs shared throughput
+        db.command({'customAction': "CreateCollection", 'collection': COLLECTION_NAME})
+        print("Created collection '{}'.\n". format(COLLECTION_NAME))
+    else:
+        print("Using collection: '{}'.\n".format(COLLECTION_NAME))
     # </create_collection>
 
     # <create_index>
@@ -98,9 +106,10 @@ if __name__ == '__main__':
 
 """
 # <console_result>
-Using database: adventureworks
 
-Using collection: products
+Created db 'adventureworks' with shared throughput.
+
+Created collection 'products'.
 
 Indexes are: ['_id_', 'name_1']
 
