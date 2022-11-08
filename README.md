@@ -16,7 +16,7 @@ Prerequisites:
 
 Use `python run.py` to run the code which will prompt you for a connection string.
 
-### Sample 2 - Quickstart documentation
+## Sample 2 - Quickstart documentation
 
 The quickstart https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/quickstart-python uses the code snippets from the *001-quickstart/run.py* file and sets connection string information from and environment variable, for example, with an *.env* file and python-dotenv.
 
