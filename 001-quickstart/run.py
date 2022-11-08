@@ -101,7 +101,7 @@ def main():
     # </new_doc>
 
     # <read_doc>
-    doc = collection.find_one({"_id": result.upserted_id})
+    doc = collection.find_one({"_id": result.upserted_id, "category": "gear-surf-surfboards"})
     print("Found a document with _id {}: {}\n".format(result.upserted_id, doc))
     # </read_doc>
 
