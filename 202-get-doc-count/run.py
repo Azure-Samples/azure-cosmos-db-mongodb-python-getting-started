@@ -61,6 +61,13 @@ if __name__ == "__main__":
 
 """
 # <console_result>
-
+Database: adventureworks
+        Collection: products_new
+        Document count: 1
+        Collection: products
+        Document count: 3
+Database: testdb
+        Collection: mycoll
+        Document count: 1
 # </console_result>
 """

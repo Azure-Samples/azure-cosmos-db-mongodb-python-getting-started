@@ -57,6 +57,12 @@ if __name__ == "__main__":
 
 """
 # <console_result>
-
+Key: version , Value: 3.6.0
+Key: versionArray , Value: [3, 6, 0, 0]
+Key: bits , Value: 64
+Key: maxBsonObjectSize , Value: 16777216
+Key: ok , Value: 1.0
+Server status {'ok': 1.0}
+Databases: ['adventureworks']
 # </console_result>
 """
