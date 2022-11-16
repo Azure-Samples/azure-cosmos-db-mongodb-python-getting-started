@@ -16,36 +16,21 @@ from dotenv import load_dotenv
 
 
 def main():
-    """Connect to the API for MongoDB and check if database exists"""
+    """Connect to the API for MongoDB and drop database."""
 
     try:
         load_dotenv()
         CONNECTION_STRING = os.environ.get("COSMOS_CONNECTION_STRING")
         client = pymongo.MongoClient(CONNECTION_STRING)
 
-        # <does_database_exist> 
-        # Get list of databases
-        databases = client.list_database_names()
-        if not databases:
-            print("No databases found")
-
-        # Does database exist?
-        DB_NAME = "adventureworks"
-        if DB_NAME in databases:
-            print("Database exists: {}".format(DB_NAME))
+        # <drop_database>
+        DB_NAME = input("Enter database name to drop: ")
+        if DB_NAME in client.list_database_names():
+            print("Dropping database: {}".format(DB_NAME))
+            client.drop_database(DB_NAME)
         else:
-            client[DB_NAME].command({"customAction": "CreateDatabase", "offerThroughput": 400})
-            print("Created db '{}' with shared throughput.\n".format(DB_NAME))
-        # </does_database_exist>
-
-        # <does_collection_exist>
-        COLL_NAME = "products"
-        if COLL_NAME in client[DB_NAME].list_collection_names():
-            print("Collection exists: {}".format(COLL_NAME))
-        else:
-            client[DB_NAME].command({"customAction": "CreateCollection", "collection": COLL_NAME})
-            print("Created collection '{}'.\n".format(COLL_NAME))
-        # </does_collection_exist>
+            print("Didn't find database: {}".format(DB_NAME))
+        # </drop_database>
 
         try:
             client.server_info()  # validate connection string
@@ -60,11 +45,13 @@ def main():
 
     client.close()
 
+
 if __name__ == "__main__":
     main()
 
 """
 # <console_result>
-Database exists: adventureworks
+Enter database name to drop: adventureworks
+Dropping database: adventureworks
 # </console_result>
 """
