@@ -1,6 +1,6 @@
 name: Validate Python projects
 on:
-  pull_request:
+  push:
     branches:
       - doc-samples
 jobs:
