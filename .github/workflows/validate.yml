@@ -29,4 +29,4 @@ jobs:
       - name: Lint with flake8
         run: flake8 --count --verbose run.py
       - name: Check format with black
-        run: black --check --verbose run.py
+        run: black --check --verbose --line-length 79 run.py
