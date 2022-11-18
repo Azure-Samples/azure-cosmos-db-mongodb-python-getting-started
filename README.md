@@ -18,3 +18,5 @@ Prerequisites:
 Use `python run.py` to run the code samples. 
 
 Make sure you define an *.env* variable with the connection string if needed for a sample.
+
+Small change.
