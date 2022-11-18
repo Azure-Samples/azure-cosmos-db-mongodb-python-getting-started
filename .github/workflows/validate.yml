@@ -1,8 +1,9 @@
 name: Validate Python projects
 on:
-  [workflow_dispatch, push]:
-    branches:
-      - doc-samples
+    workflow_dispatch:
+    push:
+        branches:
+            - doc-samples
 jobs:
   validate:
     name: Validate Python project
