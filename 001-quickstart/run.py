@@ -68,7 +68,7 @@ def main():
     collection = db[COLLECTION_NAME]
     if COLLECTION_NAME not in db.list_collection_names():
         # Creates a unsharded collection that uses the DBs shared throughput
-        db.command({"customAction": "CreateCollection", 
+        db.command({"customAction": "CreateCollection",
                     "collection": COLLECTION_NAME})
         print("Created collection '{}'.\n".format(COLLECTION_NAME))
     else:
@@ -134,7 +134,7 @@ Indexes are: ['_id_', 'name_1']
 Upserted document with _id <ID>
 
 Found a document with _id <ID>:
-{'_id': <ID>, 
+{'_id': <ID>,
 'category': 'gear-surf-surfboards',
 'name': 'Yamba Surfboard-50',
 'quantity': 1,
