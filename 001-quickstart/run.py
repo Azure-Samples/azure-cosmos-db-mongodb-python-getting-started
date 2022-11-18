@@ -68,7 +68,8 @@ def main():
     collection = db[COLLECTION_NAME]
     if COLLECTION_NAME not in db.list_collection_names():
         # Creates a unsharded collection that uses the DBs shared throughput
-        db.command({"customAction": "CreateCollection", "collection": COLLECTION_NAME})
+        db.command({"customAction": "CreateCollection", 
+                    "collection": COLLECTION_NAME})
         print("Created collection '{}'.\n".format(COLLECTION_NAME))
     else:
         print("Using collection: '{}'.\n".format(COLLECTION_NAME))
@@ -112,7 +113,8 @@ def main():
     """Query for documents in the collection"""
     print("Products with category 'gear-surf-surfboards':\n")
     allProductsQuery = {"category": "gear-surf-surfboards"}
-    for doc in collection.find(allProductsQuery).sort("name", pymongo.ASCENDING):
+    for doc in collection.find(allProductsQuery) \
+                         .sort("name", pymongo.ASCENDING):
         print("Found a product with _id {}: {}\n".format(doc["_id"], doc))
     # </query_docs>
 
