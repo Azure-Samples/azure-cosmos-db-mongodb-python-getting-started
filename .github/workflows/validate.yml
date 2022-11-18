@@ -1,6 +1,8 @@
 name: Validate Python projects
 on:
     workflow_dispatch:
+        branches:
+            - doc-samples
     push:
         branches:
             - doc-samples
@@ -13,7 +15,7 @@ jobs:
       matrix:
         project-directory:
           - ./001-quickstart
-          - ./002-client-connection-string
+          - ./101-client-connection-string
     defaults:
       run:
         working-directory: ${{ matrix.project-directory }}
