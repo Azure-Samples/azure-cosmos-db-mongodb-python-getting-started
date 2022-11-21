@@ -15,6 +15,9 @@ jobs:
           - ./001-quickstart
           - ./101-client-connection-string
           - ./200-admin
+          - ./201-does-database-exist
+          - ./202-get-doc-count
+          - ./300-drop-database
     defaults:
       run:
         working-directory: ${{ matrix.project-directory }}

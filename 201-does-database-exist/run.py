@@ -1,12 +1,12 @@
-# ----------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 #  Prerequisites:
 #
 # 1. An Azure Cosmos DB API for MongoDB Account.
 # 2. PyMongo installed.
 # 3. python-dotenv installed (to load environment variables from a .env file).
-# ----------------------------------------------------------------------------------------------------------
-# Code samples are used in documentation, do not change unless synchronizing with documentation.
-# ----------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
+# Code samples are used in documentation, keep synchronized with docs.
+# ----------------------------------------------------------------------------
 
 import os
 import sys
@@ -23,7 +23,7 @@ def main():
         CONNECTION_STRING = os.environ.get("COSMOS_CONNECTION_STRING")
         client = pymongo.MongoClient(CONNECTION_STRING)
 
-        # <does_database_exist> 
+        # <does_database_exist>
         # Get list of databases
         databases = client.list_database_names()
         if not databases:
@@ -34,7 +34,9 @@ def main():
         if DB_NAME in databases:
             print("Database exists: {}".format(DB_NAME))
         else:
-            client[DB_NAME].command({"customAction": "CreateDatabase", "offerThroughput": 400})
+            client[DB_NAME].command(
+                {"customAction": "CreateDatabase", "offerThroughput": 400}
+            )
             print("Created db '{}' with shared throughput.\n".format(DB_NAME))
         # </does_database_exist>
 
@@ -43,7 +45,9 @@ def main():
         if COLL_NAME in client[DB_NAME].list_collection_names():
             print("Collection exists: {}".format(COLL_NAME))
         else:
-            client[DB_NAME].command({"customAction": "CreateCollection", "collection": COLL_NAME})
+            client[DB_NAME].command(
+                {"customAction": "CreateCollection", "collection": COLL_NAME}
+            )
             print("Created collection '{}'.\n".format(COLL_NAME))
         # </does_collection_exist>
 
@@ -59,6 +63,7 @@ def main():
         sys.exit("Error:" + str(err))
 
     client.close()
+
 
 if __name__ == "__main__":
     main()
