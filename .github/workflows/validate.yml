@@ -1,7 +1,6 @@
 name: Validate Python projects
 on: 
-  workflow_dispatch:
-  push:
+  pull_request:
     branches:
         - doc-samples
 jobs:
