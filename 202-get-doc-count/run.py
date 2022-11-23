@@ -1,12 +1,12 @@
-# ----------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 #  Prerequisites:
 #
 # 1. An Azure Cosmos DB API for MongoDB Account.
 # 2. PyMongo installed.
 # 3. python-dotenv installed (to load environment variables from a .env file).
-# ----------------------------------------------------------------------------------------------------------
-# Code samples are used in documentation, do not change unless synchronizing with documentation.
-# ----------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
+# Code samples are used in documentation, keep synchronized with docs.
+# ----------------------------------------------------------------------------
 
 import os
 import sys
@@ -55,6 +55,7 @@ def main():
         sys.exit("Error:" + str(err))
 
     client.close()
+
 
 if __name__ == "__main__":
     main()

@@ -1,13 +1,13 @@
-# ----------------------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 #  Prerequisites:
 #
 # 1. An Azure Cosmos DB API for MongoDB Account.
 # 2. PyMongo installed.
 # 3. python-dotenv installed (to load environment variables from a .env file).
-# ----------------------------------------------------------------------------------------------------------
-# Sample - demonstrates the basic CRUD operations on a document in the Azure Cosmos DB API for MongoDB
+# -----------------------------------------------------------------------------
+# Sample - shows doc CRUD operations oin the Azure Cosmos DB API for MongoDB
 #        - for use in quickstart article
-# ----------------------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 
 # <package_dependencies>
 import os
@@ -32,7 +32,9 @@ COLLECTION_NAME = "products"
 
 
 def main():
-    """Connect to the API for MongoDB, create DB and collection, perform CRUD operations"""
+    """Connect to the API for MongoDB, create DB and collection,
+    perform CRUD operations
+    """
 
     try:
         # <connect_client>
@@ -53,7 +55,8 @@ def main():
     # Create database if it doesn't exist
     db = client[DB_NAME]
     if DB_NAME not in client.list_database_names():
-        # Database with 400 RU throughput that can be shared across the DB's collections
+        # Create a database with 400 RU throughput that can be shared across
+        # the DB's collections
         db.command({"customAction": "CreateDatabase", "offerThroughput": 400})
         print("Created db '{}' with shared throughput.\n".format(DB_NAME))
     else:
@@ -65,7 +68,9 @@ def main():
     collection = db[COLLECTION_NAME]
     if COLLECTION_NAME not in db.list_collection_names():
         # Creates a unsharded collection that uses the DBs shared throughput
-        db.command({"customAction": "CreateCollection", "collection": COLLECTION_NAME})
+        db.command(
+            {"customAction": "CreateCollection", "collection": COLLECTION_NAME}
+        )
         print("Created collection '{}'.\n".format(COLLECTION_NAME))
     else:
         print("Using collection: '{}'.\n".format(COLLECTION_NAME))
@@ -109,7 +114,9 @@ def main():
     """Query for documents in the collection"""
     print("Products with category 'gear-surf-surfboards':\n")
     allProductsQuery = {"category": "gear-surf-surfboards"}
-    for doc in collection.find(allProductsQuery).sort("name", pymongo.ASCENDING):
+    for doc in collection.find(allProductsQuery).sort(
+        "name", pymongo.ASCENDING
+    ):
         print("Found a product with _id {}: {}\n".format(doc["_id"], doc))
     # </query_docs>
 
@@ -128,10 +135,20 @@ Indexes are: ['_id_', 'name_1']
 
 Upserted document with _id <ID>
 
-Found a document with _id <ID>: {'_id': <ID>, 'category': 'gear-surf-surfboards', 'name': 'Yamba Surfboard-50', 'quantity': 1, 'sale': False}
+Found a document with _id <ID>:
+{'_id': <ID>,
+'category': 'gear-surf-surfboards',
+'name': 'Yamba Surfboard-50',
+'quantity': 1,
+'sale': False}
 
 Products with category 'gear-surf-surfboards':
 
-Found a product with _id <ID>: {'_id': ObjectId('<ID>'), 'name': 'Yamba Surfboard-386', 'category': 'gear-surf-surfboards', 'quantity': 1, 'sale': False}
+Found a product with _id <ID>:
+{'_id': ObjectId('<ID>'),
+'name': 'Yamba Surfboard-386',
+'category': 'gear-surf-surfboards',
+'quantity': 1,
+'sale': False}
 # </console_result>
 """
