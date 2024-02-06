@@ -79,7 +79,7 @@ def main():
     # <create_index>
     indexes = [
         {"key": {"_id": 1}, "name": "_id_1"},
-        {"key": {"name": 2}, "name": "_id_2"},
+        {"key": {"name": 1}, "name": "name_1"},
     ]
     db.command(
         {
